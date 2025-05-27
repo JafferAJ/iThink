@@ -8,7 +8,8 @@
 import SwiftUI
 import PDFKit
 
-struct DashboardButton: View {
+/// A reusable iThink-style button with a system icon and text.
+struct IThinkButton: View {
     let title: String
     let systemImage: String
     let action: () -> Void
@@ -35,7 +36,7 @@ struct DashboardButton: View {
     }
 }
 
-
+/// A SwiftUI wrapper around `PDFView` to display PDF documents.
 struct PDFViewer: UIViewRepresentable {
     let url: URL
 
@@ -51,6 +52,7 @@ struct PDFViewer: UIViewRepresentable {
     func updateUIView(_ uiView: PDFView, context: Context) {}
 }
 
+/// A SwiftUI wrapper for the native `UIImagePickerController`.
 struct ImagePicker: UIViewControllerRepresentable {
     var sourceType: UIImagePickerController.SourceType
     var completion: (UIImage) -> Void
@@ -63,32 +65,34 @@ struct ImagePicker: UIViewControllerRepresentable {
         let picker = UIImagePickerController()
         picker.sourceType = sourceType
         picker.delegate = context.coordinator
-        picker.allowsEditing = false  // Set to true if you want crop/edit
-        
-        // 🔒 Important for camera
+        picker.allowsEditing = false
+
         if sourceType == .camera {
             picker.cameraCaptureMode = .photo
         }
-        
+
         return picker
     }
     
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
-    
+
+    /// Coordinator class to handle image picker delegate callbacks.
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         let parent: ImagePicker
         
         init(_ parent: ImagePicker) {
             self.parent = parent
         }
-        
+
+        /// Called when an image is selected.
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let image = info[.originalImage] as? UIImage {
                 parent.completion(image)
             }
             picker.dismiss(animated: true)
         }
-        
+
+        /// Called when the picker is cancelled.
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             picker.dismiss(animated: true)
         }

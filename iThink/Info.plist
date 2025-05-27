@@ -14,7 +14,9 @@
 		</dict>
 	</array>
     <key>NSCameraUsageDescription</key>
-    <string>This app requires camera access to take photos.</string>
+    <string>iThink app requires camera access to take photos.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>iThink app need access to your photos so you can upload an image.</string>
     <key>NSAppTransportSecurity</key>
     <dict>
         <key>NSAllowsArbitraryLoads</key>

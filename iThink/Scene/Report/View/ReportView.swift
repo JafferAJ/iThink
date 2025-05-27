@@ -13,7 +13,7 @@ struct ReportView: View {
 
     var body: some View {
         ZStack {
-            // Background
+            // MARK: - Background Gradient
             LinearGradient(
                 gradient: Gradient(colors: [Color.indigo.opacity(0.6), Color.purple.opacity(0.7)]),
                 startPoint: .topLeading,
@@ -22,15 +22,20 @@ struct ReportView: View {
             .edgesIgnoringSafeArea(.all)
 
             VStack(spacing: 20) {
-                // Header
+                // MARK: - Header Section
                 VStack(spacing: 6) {
+                    // Report icon
                     Image(systemName: "doc.richtext")
                         .font(.system(size: 40))
                         .foregroundColor(.white)
+
+                    // Title text
                     Text("Balance Sheet Report")
                         .font(.title2)
                         .bold()
                         .foregroundColor(.white)
+
+                    // Subtitle with year range
                     Text("2024 - 2025")
                         .font(.subheadline)
                         .foregroundColor(.white.opacity(0.8))
@@ -40,14 +45,16 @@ struct ReportView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .shadow(radius: 10)
                 .padding(.horizontal)
+                // Slight scaling animation for subtle emphasis
                 .scaleEffect(viewModel.animate ? 1.02 : 1)
                 .onAppear {
+                    // Animate scale effect indefinitely with autoreverse
                     withAnimation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true)) {
                         viewModel.animate.toggle()
                     }
                 }
 
-                // PDF Viewer
+                // MARK: - PDF Viewer Section
                 PDFViewer(url: viewModel.pdfURL)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.white)
@@ -57,6 +64,7 @@ struct ReportView: View {
             }
             .padding(.top, 40)
 
+            // MARK: - Back Button Overlay
             VStack {
                 HStack {
                     Button(action: {

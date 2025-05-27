@@ -12,6 +12,7 @@ struct DashboardView: View {
     
     var body: some View {
         ZStack {
+            // Background gradient
             LinearGradient(
                 gradient: Gradient(colors: [Color.indigo.opacity(0.8), Color.purple.opacity(0.9)]),
                 startPoint: .topLeading,
@@ -21,10 +22,12 @@ struct DashboardView: View {
             
             ScrollView {
                 VStack(spacing: 30) {
+                    
                     // MARK: - Profile Header
                     VStack {
-                        if let imageURL = viewModel.userDetails?.photoURL {
-                            AsyncImage(url: URL(string: imageURL)) { phase in
+                        let imageURL = viewModel.userDetails?.photoURL
+                        if imageURL != nil && imageURL != "" {
+                            AsyncImage(url: URL(string: imageURL ?? "")) { phase in
                                 if let image = phase.image {
                                     image
                                         .resizable()
@@ -56,27 +59,19 @@ struct DashboardView: View {
                             .foregroundColor(.white.opacity(0.8))
                     }
                     
-                    // MARK: - Action Cards
+                    // MARK: - Action Buttons
                     VStack(spacing: 20) {
-                        DashboardButton(title: "Get API Service", systemImage: "server.rack") {
-                            // Navigate to PDF Viewer
-                            withAnimation {
-                                viewModel.gotoAPIService = true
-                            }
+                        IThinkButton(title: "Device List", systemImage: "server.rack") {
+                            withAnimation { viewModel.gotoDeviceList = true }
                         }
-                        DashboardButton(title: "View Report", systemImage: "doc.richtext") {
-                            // Navigate to PDF Viewer
-                            withAnimation {
-                                viewModel.isToViewReport = true
-                            }
+                        IThinkButton(title: "View Report", systemImage: "doc.richtext") {
+                            withAnimation { viewModel.isToViewReport = true }
                         }
-                        DashboardButton(title: "Capture or select image", systemImage: "camera") {
-                            // Launch Camera
-                            withAnimation {
-                                viewModel.isToImageCapture = true
-                            }
+                        IThinkButton(title: "Capture or select image", systemImage: "camera") {
+                            withAnimation { viewModel.isToImageCapture = true }
                         }
                         
+                        // Notifications toggle row
                         HStack {
                             Image(systemName: "bell.badge")
                                 .font(.title2)
@@ -89,7 +84,7 @@ struct DashboardView: View {
                             
                             Toggle("", isOn: $viewModel.notificationsEnabled)
                                 .onChange(of: viewModel.notificationsEnabled) { newValue in
-                                    UserDefaults.standard.setValue(viewModel.notificationsEnabled, forKey: "notificationsEnabled")
+                                    UserDefaults.standard.setValue(newValue, forKey: "notificationsEnabled")
                                 }
                         }
                         .padding()
@@ -101,7 +96,7 @@ struct DashboardView: View {
                     
                     Spacer()
                     
-                    // MARK: - Sign Out
+                    // MARK: - Sign Out Button
                     Button(action: {
                         viewModel.signOutUser()
                     }) {
@@ -118,11 +113,12 @@ struct DashboardView: View {
                 }
                 .padding()
             }
+            
+            // NavigationLinks driven by state variables
             NavigationLink("", destination: ReportView(), isActive: $viewModel.isToViewReport)
-            NavigationLink("", destination: APIServiceView(), isActive: $viewModel.gotoAPIService)
+            NavigationLink("", destination: DeviceListView(), isActive: $viewModel.gotoDeviceList)
             NavigationLink("", destination: ImageCaptureView(), isActive: $viewModel.isToImageCapture)
             NavigationLink("", destination: LoginView(), isActive: $viewModel.isToLogin)
-            
         }
         .navigationBarHidden(true)
         .onAppear {
@@ -130,7 +126,6 @@ struct DashboardView: View {
         }
     }
 }
-
 
 #Preview {
     DashboardView()

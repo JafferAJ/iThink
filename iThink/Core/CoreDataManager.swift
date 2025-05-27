@@ -7,14 +7,21 @@
 
 import CoreData
 
+/// A singleton class that manages Core Data stack and provides CRUD operations for UserDetail and DeviceModel entities.
 class CoreDataManager {
+    
+    /// Shared instance for global access to CoreDataManager
     static let shared = CoreDataManager()
+    
+    /// The NSPersistentContainer that encapsulates the Core Data stack
     let container: NSPersistentContainer
 
-    private var context: NSManagedObjectContext {
+    /// The main context used for all Core Data operations
+    var context: NSManagedObjectContext {
         container.viewContext
     }
 
+    /// Initializes the Core Data stack with the persistent container named "iThink"
     private init() {
         container = NSPersistentContainer(name: "iThink")
         container.loadPersistentStores { _, error in
@@ -24,6 +31,7 @@ class CoreDataManager {
         }
     }
 
+    /// Saves changes in the current context if there are any.
     func saveContext() {
         if context.hasChanges {
             do {
@@ -32,56 +40,5 @@ class CoreDataManager {
                 print("Failed saving context: \(error.localizedDescription)")
             }
         }
-    }
-
-    // MARK: - UserDetail CRUD
-
-    func createUser(id: String, name: String, email: String, photoURL: String) {
-        let user = UserDetail(context: context)
-        user.id = id
-        user.name = name
-        user.email = email
-        user.photoURL = photoURL
-        saveContext()
-    }
-
-    func fetchUsers() -> [UserDetail] {
-        let request: NSFetchRequest<UserDetail> = UserDetail.fetchRequest()
-        do {
-            return try context.fetch(request)
-        } catch {
-            print("Failed to fetch users: \(error)")
-            return []
-        }
-    }
-
-    func deleteUser(_ user: UserDetail) {
-        context.delete(user)
-        saveContext()
-    }
-
-    // MARK: - DeviceModel CRUD
-
-    func createDevice(id: String, name: String, data: String?) {
-        let device = DeviceModel(context: context)
-        device.id = id
-        device.name = name
-        device.data = data
-        saveContext()
-    }
-
-    func fetchDevices() -> [DeviceModel] {
-        let request: NSFetchRequest<DeviceModel> = DeviceModel.fetchRequest()
-        do {
-            return try context.fetch(request)
-        } catch {
-            print("Failed to fetch devices: \(error)")
-            return []
-        }
-    }
-
-    func deleteDevice(_ device: DeviceModel) {
-        context.delete(device)
-        saveContext()
     }
 }

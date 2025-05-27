@@ -32,8 +32,8 @@
 		C5D8DFE42DE4717100750C02 /* CommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8DFE32DE4717100750C02 /* CommonView.swift */; };
 		C5D8DFE62DE4720200750C02 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8DFE52DE4720200750C02 /* ReportViewModel.swift */; };
 		C5D8DFE82DE4734800750C02 /* ImageCaptureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8DFE72DE4734800750C02 /* ImageCaptureViewModel.swift */; };
-		C5D8DFED2DE4754E00750C02 /* APIServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8DFEC2DE4754E00750C02 /* APIServiceView.swift */; };
-		C5D8DFEF2DE4757600750C02 /* APIServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8DFEE2DE4757600750C02 /* APIServiceViewModel.swift */; };
+		C5D8DFED2DE4754E00750C02 /* DeviceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8DFEC2DE4754E00750C02 /* DeviceListView.swift */; };
+		C5D8DFEF2DE4757600750C02 /* DeviceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8DFEE2DE4757600750C02 /* DeviceListViewModel.swift */; };
 		C5D8E02A2DE57F7500750C02 /* DeviceResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8E0292DE57F7500750C02 /* DeviceResponseModel.swift */; };
 		C5D8E02C2DE57FBF00750C02 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8E02B2DE57FBF00750C02 /* NotificationManager.swift */; };
 		C5D8E02E2DE589D600750C02 /* ViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8E02D2DE589D600750C02 /* ViewExtention.swift */; };
@@ -61,8 +61,8 @@
 		C5D8DFE32DE4717100750C02 /* CommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonView.swift; sourceTree = "<group>"; };
 		C5D8DFE52DE4720200750C02 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
 		C5D8DFE72DE4734800750C02 /* ImageCaptureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCaptureViewModel.swift; sourceTree = "<group>"; };
-		C5D8DFEC2DE4754E00750C02 /* APIServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceView.swift; sourceTree = "<group>"; };
-		C5D8DFEE2DE4757600750C02 /* APIServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceViewModel.swift; sourceTree = "<group>"; };
+		C5D8DFEC2DE4754E00750C02 /* DeviceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListView.swift; sourceTree = "<group>"; };
+		C5D8DFEE2DE4757600750C02 /* DeviceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListViewModel.swift; sourceTree = "<group>"; };
 		C5D8E0292DE57F7500750C02 /* DeviceResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceResponseModel.swift; sourceTree = "<group>"; };
 		C5D8E02B2DE57FBF00750C02 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		C5D8E02D2DE589D600750C02 /* ViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtention.swift; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 			children = (
 				C5D8DFD22DE4700600750C02 /* Login */,
 				C5D8DFD32DE4701500750C02 /* Dashboard */,
-				C5D8DFE92DE4752500750C02 /* API Service */,
+				C5D8DFE92DE4752500750C02 /* Device List */,
 				C5D8DFD52DE4704400750C02 /* Report */,
 				C5D8DFD42DE4703600750C02 /* Image Capture */,
 			);
@@ -271,19 +271,19 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		C5D8DFE92DE4752500750C02 /* API Service */ = {
+		C5D8DFE92DE4752500750C02 /* Device List */ = {
 			isa = PBXGroup;
 			children = (
 				C5D8DFEA2DE4753300750C02 /* View */,
 				C5D8DFEB2DE4753A00750C02 /* ViewModel */,
 			);
-			path = "API Service";
+			path = "Device List";
 			sourceTree = "<group>";
 		};
 		C5D8DFEA2DE4753300750C02 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C5D8DFEC2DE4754E00750C02 /* APIServiceView.swift */,
+				C5D8DFEC2DE4754E00750C02 /* DeviceListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -291,7 +291,7 @@
 		C5D8DFEB2DE4753A00750C02 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				C5D8DFEE2DE4757600750C02 /* APIServiceViewModel.swift */,
+				C5D8DFEE2DE4757600750C02 /* DeviceListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -387,7 +387,7 @@
 				C5D8E0322DE58CE100750C02 /* DeviceModel+CoreData.swift in Sources */,
 				C5D8DFCE2DE461F000750C02 /* ImageCaptureView.swift in Sources */,
 				C53900172DE4229100FB41CE /* iThink.xcdatamodeld in Sources */,
-				C5D8DFEF2DE4757600750C02 /* APIServiceViewModel.swift in Sources */,
+				C5D8DFEF2DE4757600750C02 /* DeviceListViewModel.swift in Sources */,
 				C5D8E02A2DE57F7500750C02 /* DeviceResponseModel.swift in Sources */,
 				C5D8DFCA2DE45E8000750C02 /* ReportView.swift in Sources */,
 				C5D8DFCC2DE45EE000750C02 /* DashboardViewModel.swift in Sources */,
@@ -395,7 +395,7 @@
 				C5D8E02E2DE589D600750C02 /* ViewExtention.swift in Sources */,
 				C5D8DFE82DE4734800750C02 /* ImageCaptureViewModel.swift in Sources */,
 				C53D790C2DE44C280040B512 /* DashboardView.swift in Sources */,
-				C5D8DFED2DE4754E00750C02 /* APIServiceView.swift in Sources */,
+				C5D8DFED2DE4754E00750C02 /* DeviceListView.swift in Sources */,
 				C53900182DE4229100FB41CE /* iThinkApp.swift in Sources */,
 				C539002A2DE42A7200FB41CE /* LoginView.swift in Sources */,
 				C5D8E0342DE58D0600750C02 /* UserDetail+CoreData.swift in Sources */,
@@ -529,9 +529,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = iThink/iThink.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5KJJ6Y676S;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iThink/Info.plist;
@@ -574,9 +574,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = iThink/iThink.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5KJJ6Y676S;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iThink/Info.plist;

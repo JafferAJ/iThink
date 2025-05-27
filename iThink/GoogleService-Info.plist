@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>945482100408-i28hroc7le5gq1nrgva46d7ak7af0ekj.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.945482100408-i28hroc7le5gq1nrgva46d7ak7af0ekj</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBLD-3yYBo4PkINX3k3TPMvMhH4T_StyrI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>945482100408</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.abduljaafar.iThink</string>
+	<key>PROJECT_ID</key>
+	<string>ithink-3becd</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ithink-3becd.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:945482100408:ios:0c7159897a727c03db8e4d</string>
+</dict>
+</plist>
